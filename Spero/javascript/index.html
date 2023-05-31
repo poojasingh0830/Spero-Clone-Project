@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  <input type="text" id="userInput">
+  <button onclick="buttonClick()">submit</button>
+  <ul id="list"></ul> -->
+
+  <h1>Shopping List</h1>
+  <p id="first">Get it done today</p>
+  <input id="userinput" type="text" placeholder="enter items" />
+  <button id="enter">Enter</button>
+  <ul id="list"></ul>
+
+  <!-- <button id="buttonClick">Click</button>
+  <div id="box" class="abc">this is box</div> -->
+
+
+  <script>
+    // let box = document.getElementById("box")
+    // let y = document.getElementById("buttonClick")
+
+    // y.addEventListener("click", functionName)
+
+    // function functionName() {
+    //   box.classList.replace("abc", "xyz")
+    // }
+
+    var button = document.getElementById("enter");
+    var input = document.getElementById("userinput");
+    var ul = document.querySelector("#list");
+    var list = document.querySelectorAll("#list>li");
+
+    function createListElement() {
+      var deleteButton = document.createElement("button");
+      deleteButton.setAttribute("class", "btn");
+      deleteButton.appendChild(document.createTextNode("Delete"));
+
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(input.value));
+      ul.appendChild(li);
+      input.value = "";
+      ul > li.appendChild(deleteButton).addEventListener("click", removeItem);
+    }
+
+    function addListAfterClick() {
+      createListElement();
+    }
+
+    function addListAfterKeypress(event) {
+      if (event.keyCode === 13) {
+        createListElement();
+      }
+    }
+
+    button.addEventListener("click", addListAfterClick);
+    input.addEventListener("keypress", addListAfterKeypress);
+
+    var elements = document.getElementsByClassName("btn");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].addEventListener("click", removeItem);
+    }
+
+    function removeItem() {
+      this.parentNode.remove();
+    }
+
+
+      // function buttonClick(){
+      //   let li = document.createElement("li")
+      //   let removeBtnele = document.createElement("button")
+      //   let text = document.getElementById("userInput").value
+      //   let listChild = list.appendChild(li)
+      //   listChild.textContent = text
+      //   let removeBtn = listChild.appendChild(removeBtnele).textContent = "remove"
+      //   removeBtnele.className = "btn"
+      // }
+
+      // let elements = document.getElementsByClassName("btn")
+      // for(let i = 0; i < elements.length; i++){
+      //   elements[i].addEventListener("click", removeItem)
+      //   console.log(elements[i])
+      // }
+
+      // function removeItem(){
+      //   alert("sfsdf")
+      //   this.parentNode.remove()
+      // }
+
+
+
+      // create element
+
+      // let box = document.getElementById("box");
+      // let p = document.createElement("p")
+      // let text = document.createTextNode("This is amit")
+      // p.appendChild(text)
+      // p.textContent = "this is amit"
+      // p.style.color = "blue"
+      // box.appendChild(p)
+
+      // let list = document.getElementById("list");
+      // let li = document.createElement("li")
+      // let liText = document.createTextNode("list 5")
+
+      // li.appendChild(liText)
+      // list.appendChild(li)
+
+      // let h1 = document.getElementById("h1")
+      // h1.innerHTML = "this is text"
+
+      // let element = document.getElementsByClassName("pragraph")
+      // console.log(element)
+
+      // for(let i = 0; i < element.length; i++){
+      //   element[i].innerHTML = "this is text"
+      // }
+
+      //query selector
+
+      // let elem = document.querySelector("#list")
+      //   console.log(elem);
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="custom.js"></script>
+</body>
+
+</html>
